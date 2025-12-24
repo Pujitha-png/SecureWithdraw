@@ -1,0 +1,30 @@
+{
+  "name": "securevault",
+  "version": "1.0.0",
+  "description": "Authorization-governed vault system for controlled asset withdrawals",
+  "main": "index.js",
+  "scripts": {
+    "test": "hardhat test",
+    "deploy": "hardhat run scripts/deploy.js --network localhost",
+    "node": "hardhat node",
+    "compile": "hardhat compile"
+  },
+  "keywords": [
+    "blockchain",
+    "vault",
+    "authorization",
+    "smart-contracts"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomiclabs/hardhat-waffle": "^2.0.6",
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "chai": "^4.3.7",
+    "ethereum-waffle": "^4.0.10",
+    "ethers": "^5.7.2",
+    "hardhat": "^2.14.0",
+    "solidity-coverage": "^0.8.2",
+    "hardhat-gas-reporter": "^1.0.8"
+  }
+}
