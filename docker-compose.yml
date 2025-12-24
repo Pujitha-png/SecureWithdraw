@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  blockchain:
+    image: node:18-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "8545:8545"
+    command: npx hardhat node
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8545"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  deployer:
+    image: node:18-alpine
+    working_dir: /app
+    depends_on:
+      blockchain:
+        condition: service_healthy
+    volumes:
+      - .:/app
+    environment:
+      - HARDHAT_NETWORK=localhost
+    command: bash -c "npm install && npx hardhat compile && npx hardhat run scripts/deploy.js --network localhost"
